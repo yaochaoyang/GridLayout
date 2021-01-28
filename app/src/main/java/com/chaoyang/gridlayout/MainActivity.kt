@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity() {
         arrayList.add(R.mipmap.imge_02)
         arrayList.add(R.mipmap.imge_03)
 
+
+        //test
 //        val gridLayout = findViewById<GridLayout>(R.id.main_gridlayout)
 //        gridLayout.setGridLayout(arrayList)
 
