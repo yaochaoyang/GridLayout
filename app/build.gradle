@@ -6,7 +6,6 @@ plugins {
 //apply plugin: 'com.chaoyang.plugin.DingTalkPlugin'
 //本地maven在哪里？ 为啥报错
 //apply plugin :'dingtalk'
-//apply plugin :'com.chaoyang.plugin.DingTalkPlugin'
 
 
 android {
@@ -54,5 +53,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //使用自己的插件
-
+    implementation 'com.chaoyang:DingTalkPlugin:1.0'
 }
