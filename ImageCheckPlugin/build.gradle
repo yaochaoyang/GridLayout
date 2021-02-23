@@ -1,0 +1,31 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    //引入gradle依赖
+    implementation gradleApi()
+//    implemention localGroovy()
+    implementation "com.android.tools.build:gradle:4.1.1"
+}
+
+//上传本地插件
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        DingTalkPlugin(MavenPublication) {
+            from components.java
+            groupId 'com.chaoyang'
+            artifactId 'DingTalkPlugin'
+            version '1.0'
+        }
+    }
+}

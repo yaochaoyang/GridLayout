@@ -1,26 +1,42 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: 'checkImageSize.gradle'
 buildscript {
     ext.kotlin_version = "1.3.72"
     repositories {
+        mavenLocal()
         google()
         jcenter()
+
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        //使用自己的插件
+        classpath "com.chaoyang:DingTalkPlugin:1.0"
     }
 }
 
 allprojects {
     repositories {
+        mavenLocal()
         google()
         jcenter()
+
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+task test {
+
+    println 'test 开始构建'
+    doFirst {
+        println 'test doFirst 开始构建'
+    }
+
+    doLast {
+        println "test doLast 开始构建"
+    }
 }

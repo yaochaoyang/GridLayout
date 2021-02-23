@@ -1,10 +1,9 @@
-package com.chaoyang.gridlayout
+package com.plugin.gridlayout
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.ImageView
 
 /**

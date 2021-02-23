@@ -8,13 +8,13 @@
         android:layout_width="match_parent"
         android:layout_height="10dp" />
 
-    <com.chaoyang.gridlayout.GridLayout
+    <com.plugin.gridlayout.GridLayout
         android:id="@+id/item_gridlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="visible" />
 
-    <com.chaoyang.gridlayout.GridLayoutForJava
+    <com.plugin.gridlayout.GridLayoutForJava
         android:visibility="gone"
         android:id="@+id/item_gridlayoutforjava"
         android:layout_width="match_parent"

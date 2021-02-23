@@ -1,0 +1,111 @@
+
+task checkImageSize {
+
+    println 'checkImageSize 开始构建'
+    doFirst {
+        println 'checkImageSize doFirst 开始构建'
+        def resDer = [':app']
+        resDer.each {
+            checkFile(it)
+        }
+    }
+
+    doLast {
+        println "checkImageSize doLast 开始构建"
+    }
+}
+
+//grovvy语言：三个过程
+//1。初始化
+//2。configuation
+//3。executing
+//比较关键的几个project方法
+//task ：表示一个任务
+//help:  每个project都包含又help任务
+//dofrist ：执行task前执行
+//dolast： 执行tasl后执行
+//fretree：
+//dependson：依赖
+
+//afterEvaluate ：执行在project 初始化后执行
+
+//beforeEvaluate ：
+
+task('frist') {
+    println("task frist configuation ")
+    doLast {
+        println("task frist executing ")
+    }
+
+}
+
+(1..10).each { i ->
+    task('task' + i) {
+        if (i % 2 == 0) {
+            dependsOn('frist')
+        }
+        def currentI = i
+        doLast {
+            println("Exceting task ${currentI}")
+        }
+    }
+
+}
+
+
+task("helloword", {
+    println("configuation")
+
+    doLast({
+        println("doLast")
+    })
+})
+
+void checkFile(String pluginPath) {
+    def path = project(pluginPath).projectDir.path
+    println "==------" + path
+    def fileName = path + "/src/main/res"
+    new File(fileName).eachFileRecurse { file ->
+        println "一级----------- " + file.name
+        if (file.name.endsWith("png")
+                || file.name.endsWith(".wep")) {
+            def size = file.size() / 1024
+            println file.name + " 图片大小 : " + size
+            if (size > 200) {
+                throw Exception("图片过大 " + file.name)
+            }
+        }
+    }
+}
+
+class MyPlugin implements Plugin<Project> {
+
+    @Override
+    void apply(Project project) {
+        def path = project(pluginPath).projectDir.path
+        println "==------" + path
+        def fileName = path + "/src/main/res"
+        new File(fileName).eachFileRecurse { file ->
+            println "一级----------- " + file.name
+            if (file.name.endsWith("png")
+                    || file.name.endsWith(".wep")) {
+                def size = file.size() / 1024
+                println file.name + " 图片大小 : " + size
+                if (size > 200) {
+                    throw Exception("图片过大 " + file.name)
+                }
+            }
+        }
+    }
+}
+
+//三总写法
+//apply([plugin: MyPlugin])
+//apply (plugin: MyPlugin)
+//apply plugin: MyPlugin
+
+
+//插件编写的三种方式
+//1。build script脚本，把plugin写在build.graldez 文件中
+//2。创建buildSrc目录，建立对应的文件路径 （这是gradle默认的插件管理目录）
+//3。创建一个独立的java工程项目，将其发布到仓库（maven，jcenter等）方便使用

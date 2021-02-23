@@ -1,2 +1,3 @@
+include ':ImageCheckPlugin'
 include ':app'
 rootProject.name = "Grid Layout"

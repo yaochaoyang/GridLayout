@@ -1,4 +1,4 @@
-package com.chaoyang.gridlayout
+package com.plugin.gridlayout
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

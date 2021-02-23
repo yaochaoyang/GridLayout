@@ -3,6 +3,12 @@ plugins {
     id 'kotlin-android'
 }
 
+//apply plugin: 'com.chaoyang.plugin.DingTalkPlugin'
+//本地maven在哪里？ 为啥报错
+//apply plugin :'dingtalk'
+//apply plugin :'com.chaoyang.plugin.DingTalkPlugin'
+
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -37,7 +43,7 @@ android {
 }
 
 dependencies {
-
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -46,4 +52,7 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //使用自己的插件
+
 }
